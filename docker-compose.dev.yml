@@ -1,0 +1,41 @@
+version: '3'
+services:
+  web:
+    build: api/.
+    command: npm run debug
+    volumes:
+      - ./api:/server
+    ports:
+      - '5000:5000'
+      - '9222:9222'
+    depends_on:
+      - postgresql
+    networks:
+      codinggirls:
+        ipv4_address: 10.0.0.19
+  postgresql:
+    image: 'postgres:latest'
+    ports:
+      - 5432:5432
+    networks:
+      codinggirls:
+        ipv4_address: 10.0.0.18
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+  redis:
+    image: 'redis:alpine'
+    restart: 'always'
+    networks:
+      codinggirls:
+        ipv4_address: 10.0.0.20
+    sysctls:
+      net.core.somaxconn: '511'
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+networks:
+  codinggirls:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.16/28

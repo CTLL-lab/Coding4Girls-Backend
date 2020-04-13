@@ -1,0 +1,39 @@
+version: '3'
+services:
+  web:
+    build: api/.
+    ports:
+      - '5001:5000'
+    depends_on:
+      - postgresql
+    networks:
+      codinggirls:
+        ipv4_address: 10.0.0.19
+    restart: unless-stopped
+  postgresql:
+    image: 'postgres:latest'
+    ports:
+      - 5431:5432
+    networks:
+      codinggirls:
+        ipv4_address: 10.0.0.18
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+    restart: unless-stopped
+  redis:
+    image: 'redis:alpine'
+    restart: 'always'
+    networks:
+      codinggirls:
+        ipv4_address: 10.0.0.20
+    sysctls:
+      net.core.somaxconn: '511'
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+networks:
+  codinggirls:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.16/28

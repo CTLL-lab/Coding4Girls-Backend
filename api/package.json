@@ -1,0 +1,40 @@
+{
+  "name": "coding4girls-api",
+  "version": "0.0.1",
+  "description": "The REST API powering the Coding4Girls platform",
+  "main": "dist/index.js",
+  "scripts": {
+    "postinstall": "tsc -p ./src",
+    "watch": "tsc -w -p ./src",
+    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/index.js",
+    "docker-debug": "docker-compose up",
+    "start": "node ./dist/index.js"
+  },
+  "author": "Spyros Panagiotopoulos",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.1",
+    "@types/express-validator": "^3.0.0",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/node": "^6.0.50",
+    "@types/pg": "^7.4.13",
+    "nodemon": "^1.11.0",
+    "request": "^2.88.0"
+  },
+  "dependencies": {
+    "@types/socket.io": "^2.1.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "multer": "^1.4.2",
+    "pg": "^7.8.0",
+    "redis": "^2.8.0",
+    "socketio": "^1.0.0",
+    "typescript": "^2.3.2"
+  }
+}

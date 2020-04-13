@@ -1,0 +1,10 @@
+export const databaseURL = '10.0.0.18';
+export const databaseUSER = process.env['POSTGRES_USER'];
+export const databasePASSWORD = process.env['POSTGRES_PASSWORD'];
+export const databaseDB = process.env['POSTGRES_USER'];
+export const databasePORT = 5432;
+export const jwtEncryptionKey = process.env['JWT_ENCRYPTION_KEY'];
+export const imgur_api_key = process.env['IMGUR_API_KEY'];
+export const fully_privileged_roles: any = ['admin', 'sysadmin'];
+export const privileged_roles: any = ['admin', 'sysadmin', 'teacher'];
+export const all_roles: any = ['student', 'teacher', 'admin', 'sysadmin'];
