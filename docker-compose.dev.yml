@@ -15,6 +15,9 @@ services:
         ipv4_address: 10.0.0.19
   postgresql:
     image: 'postgres:latest'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - 5432:5432
     networks:
